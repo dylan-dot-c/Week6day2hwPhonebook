@@ -1,0 +1,53 @@
+{# extending base.html file #} 
+{% extends 'base.html' %}
+ {# enter title for page here #}
+{% block title %} 
+  Contact 
+{% endblock %}
+  
+{# main content #}
+{% block main_content %}
+  <h1>Add New Contact</h1>
+  <p>
+    Fill in the form if you would like to add a new Contact.
+  </p>
+
+  {# form that is using the form instance that was passed #}
+  <form action="" method="post" class="w-50">
+
+    {# hidden csrf token #} {{ form.csrf_token }} 
+    
+    {# fullname label and input #}
+    <div class="mt-2">
+      {{ form.first_name.label(class='form-label') }} 
+      {{form.first_name(class='form-control', placeholder='Enter Full Name') }}
+    </div>
+    <div class="mt-2">
+      {{ form.last_name.label(class='form-label') }} 
+      {{form.last_name(class='form-control', placeholder='Enter Full Name') }}
+    </div>
+
+    {# subject label and input #}
+    <div class="mt-2">
+      {{ form.phone_number.label(class='form-label') }} 
+      {{ form.phone_number(class='form-control', placeholder='Enter Subject') }}
+    </div>
+
+    {# email label and input #}
+    <div class="mt-2">
+      {{ form.email.label(class='form-label' )}}
+      {{ form.email(class='form-control', placeholder='Enter Email') }}
+    </div>
+
+    {# content label and textarea input #}
+    <div class="mt-2">
+      {{ form.address.label(class='form-label') }} 
+      {{ form.address(class='form-control', placeholder='Enter Content') }}
+    </div>
+
+    {# submit button #}
+    <div class="mt-4">
+    {{ form.submit(class='btn btn-primary w-100') }}
+    </div>
+  </form>
+{% endblock %}

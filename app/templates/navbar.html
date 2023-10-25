@@ -1,0 +1,31 @@
+<!-- navbar from https://getbootstrap.com/docs/5.3/components/navbar/#nav -->
+<!-- this will be included in the base.html template
+    and will be seen on each page that extends
+    to base.html -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container mx-auto">
+    <a class="navbar-brand" href="{{ url_for('index')}}">PhoneBook <i class="bi bi-book-half"></i></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a
+          class="nav-link active"
+          aria-current="page"
+          href="{{ url_for('index')}}"
+          >Home</a
+        >
+        <a class="nav-link" href="{{ url_for('contact') }}">Contact</a>
+        <a class="nav-link" href="#">Pricing</a>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+<!-- extending base.html file -->
+
+{% extends 'base.html' %}
+
+<!-- enter title for page here -->
+{% block title %} Home {% endblock %}
+
+<!-- main content -->
+
+{% block main_content %}
+  <header class="mb-5">
+    <img src="{{ url_for('static', filename='images/header.jpg')}}" alt="Nice boat by the wayside"
+      width="100%" height="400px" class="rounded-5 shadow-lg object-fit-cover "
+    >
+  </header>
+
+  <h1>PhoneBook Flask</h1>
+  <div class="row fs-4">
+    <div class="col">
+      <p>This is a simple application built with Flask.</p>
+    </div>
+    <div class="col">
+      <p>It has a for on the next page where you can add a new contact.
+      </p>
+      <a href="{{ url_for('contact')}}" class="btn btn-outline-success ">
+        Add Contact
+      </a>
+    </div>
+    <div class="col">
+      <p>This was built by Dylan Heslop.</p>
+    </div>
+
+  </div>
+
+{% endblock %}
