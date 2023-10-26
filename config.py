@@ -1,4 +1,7 @@
-# config file for the app
-# Secret key is needed to make data safe and secure 
+import os
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+
 class Config:
-    SECRET_KEY = 'thisisasecretkey'
+    SECRET_KEY = 'you-will-never-guess'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
