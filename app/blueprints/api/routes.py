@@ -1,5 +1,5 @@
-from api import api
-from models import Address
+from . import api
+from app.models import Address
 from app import db
 from flask import request
 
