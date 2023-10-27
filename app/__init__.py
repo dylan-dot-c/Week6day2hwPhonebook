@@ -11,6 +11,9 @@ db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
 
+from app.blueprints.api import api 
+app.register_blueprint(api)
+
 # importing routes and forms so they can be used and access 
 from . import routes, models
 from . import forms
