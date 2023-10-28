@@ -2,7 +2,7 @@
 
 from app import app, db
 from app.models import Address
-from app.forms import ContactForm
+from app.forms import ContactForm, RegisterForm, LoginForm
 from flask import render_template, redirect, url_for, flash, request
 
 # index or home route
@@ -44,4 +44,24 @@ def contact():
         return redirect(url_for('index'))
     return render_template('addcontact.html', form=form)
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
 
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        print(form.data)
+        return redirect(url_for('index'))
+
+    return render_template('register.html', form=form )
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        print(form.data)
+        return redirect(url_for('index'))
+
+    return render_template('login.html', form=form )
