@@ -1,22 +1,15 @@
-{# extending base.html file #} 
 {% extends 'base.html' %}
- {# enter title for page here #}
-{% block title %} 
-  Contact 
-{% endblock %}
-  
-{# main content #}
-{% block main_content %}
-  <section class="container mx-auto">
-    <div class="text-center">
-      <h1>Add New Contact</h1>
-  <p>
-    Fill in the form if you would like to add a new Contact.
-  </p>
-    </div>
 
-  {# form that is using the form instance that was passed #}
-  <form action="" method="post" class="w-50 mx-auto">
+<!-- enter title for page here -->
+{% block title %} Login {% endblock %}
+
+<!-- main content -->
+
+{% block main_content %}
+    <section class="container mx-auto">
+    <h2>Edit Contact</h2>
+    <form action="" method="post" class="w-50 mx-auto">
+        
 
     {# hidden csrf token #} {{ form.csrf_token }} 
     
@@ -44,8 +37,11 @@
 
     {# submit button #}
     <div class="mt-4">
-    {{ form.submit(class='btn btn-primary w-100') }}
+        <button type="submit" class="btn btn-success w-100">Update Contact</button>
+
     </div>
-  </form>
-  </section>
+  
+    </form>
+    </section>
+
 {% endblock %}

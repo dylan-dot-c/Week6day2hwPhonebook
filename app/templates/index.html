@@ -8,28 +8,30 @@
 <!-- main content -->
 
 {% block main_content %}
-  <header class="mb-5">
+  <header class="mb-5 container mx-auto mt-3">
     <img src="{{ url_for('static', filename='images/header.jpg')}}" alt="Nice boat by the wayside"
       width="100%" height="400px" class="rounded-5 shadow-lg object-fit-cover "
     >
   </header>
 
+  <section class="container mx-auto">
+
+    
   <h1>PhoneBook Flask</h1>
-  <div class="row fs-4">
+  <div class="row fs-5">
     <div class="col">
-      <p>This is a simple application built with Flask.</p>
+      <p>This is a simple application built with Flask. You can create new Contacts</p>
     </div>
     <div class="col">
-      <p>It has a for on the next page where you can add a new contact.
+      <p>You can edit and delete contacts.
       </p>
-      <a href="{{ url_for('contact')}}" class="btn btn-outline-success ">
-        Add Contact
-      </a>
+      
     </div>
     <div class="col">
-      <p>This was built by Dylan Heslop.</p>
+      <p>You can also view alkl contacts that belong to you</p>
     </div>
 
   </div>
+  </section>
 
 {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+<!-- enter title for page here -->
+{% block title %} Login {% endblock %}
+
+<!-- main content -->
+
+{% block main_content %}
+    <section class="mx-auto row" style="max-height: 100vh;">
+        <div class="col p-4">
+            <h1 class="text-center">Login</h1>
+        <form action="" method="post" class="w-50 mx-auto ">
+            {{ form.csrf_token }}
+
+            <div class="mt-3">
+                {{ form.email.label(class='form-label ') }}
+                {{ form.email(class='form-control ') }}
+            </div>
+
+
+            <div class="mt-3">
+                {{ form.password.label(class='form-label ') }}
+                {{ form.password(class='form-control ') }}
+            </div>
+
+            <div class="mt-3">
+                {{ form.remember_me(class='form-check-input', id='remember') }}
+                {{ form.remember_me.label(class='form-check-label ', for='remember') }}
+            </div>
+
+
+            <div class="mt-3">
+                {{ form.submit(class='btn btn-primary w-100') }}
+            </div>
+
+        </form>
+        </div>
+        <div class="col">
+            <img src="{{ url_for('static', filename='images/pexels.jpg')}}" alt="Nice boat by the wayside"
+      width="100%" height="100%" class="shadow-lg object-fit-cover "
+    >
+        </div>
+    </section>
+{% endblock %}
