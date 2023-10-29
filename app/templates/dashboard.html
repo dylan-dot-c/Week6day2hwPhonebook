@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %} DashBoard {% endblock %}
+
+{% block main_content %} 
+
+    <div class="row gap-0 m-0 " style="min-height: calc(100vh - 100px)">
+        <div data-bs-theme="dark" class="col-2 bg-dark
+         text-white gap-0 p-4 ">
+            <img src="{{ current_user.image_url }}" alt="{{ current_user.email }} pic" class="mx-auto rounded-circle object-fit-cover " width="100%" height="150px">
+            <p>You have logged in as {{ current_user.first_name }} {{ current_user.last_name }}</p>
+
+            <div class="d-flex justify-content-between align-items-center border-bottom  border-2 mb-3">
+                <p>Contacts</p>
+                <p class="btn btn-success rounded-circle">{{ addresses|length }}</p>
+            </div>
+
+            <a class=" btn btn-outline-danger w-100" href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+
+        <div class="col">
+    {% if not addresses %}
+
+        <div class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 100px);">
+            <div class="w-50 mx-auto text-center ">
+                <h2>No Contacts!</h2>
+                <a href="{{url_for('contact')}}">
+                    <button class="btn btn-primary w-50">New Contact <i class="bi bi-person-plus"></i></button>
+          
+                </a>
+                  </div>
+        </div>
+        
+
+        {% else %}
+        <div class="p-3">
+            <h2 class="d-inline ">My Contacts</h2>
+                            <a href="{{url_for('contact')}}">
+                                <button class="btn btn-primary d-inline float-end ">New Contact <i class="bi bi-person-plus"></i></button>
+                            </a>
+
+            <table class="table border p-2 mt-3">
+
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for address in addresses %}
+
+                    <tr>
+                        <td>{{ address.first_name }}</td>
+                        <td>{{ address.last_name }}</td>
+                        <td>{{ address.phone_number }}</td>
+                        <td>{{ address.address }}</td>
+                        <td>{{ address.date_created.strftime('%A %B %d, %Y at %I:%M%p') }}</td>
+                        <td>
+                            <a href="/contact/edit/{{ address.id }}">
+                                <button class="btn btn-warning">Edit</button>
+                            </a>
+                            <a href="/contact/delete/{{ address.id }}">
+                                <button class="btn btn-danger">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+        
+
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        {% endif %}
+        </div>
+
+        </div>
+
+
+    </div>
+
+    
+    
+
+    
+
+
+{% endblock %}

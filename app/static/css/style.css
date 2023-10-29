@@ -1,5 +1,7 @@
 /* adding hover effect for logos */
-
+.row {
+    --bs-gutter-x: 0;
+}
 .logo {
     transition: .3s;
 }
@@ -8,3 +10,4 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+
