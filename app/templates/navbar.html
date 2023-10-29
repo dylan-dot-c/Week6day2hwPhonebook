@@ -2,7 +2,7 @@
 <!-- this will be included in the base.html template
     and will be seen on each page that extends
     to base.html -->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg bg-dark text-white" data-bs-theme="dark">
   <div class="container mx-auto">
     <a class="navbar-brand" href="{{ url_for('index')}}">PhoneBook <i class="bi bi-book-half"></i></a>
     <button
@@ -16,15 +16,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <div class="navbar-nav me-auto ">
         {% if current_user.is_authenticated %}
         <a class="nav-link" href="{{ url_for('contact') }}">Add Contact</a>
-        <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+        <a class=" btn btn-outline-danger" href="{{ url_for('logout') }}">Log Out</a>
         {% else %}
-        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-        <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+        <a class="btn btn-success " href="{{ url_for('login') }}">Login</a>
+        <a class="nav-link btn btn-secondary " href="{{ url_for('register') }}">Register</a>
         {% endif %}
       </div>
+      {% if current_user.is_authenticated %}
+        <div class="d-flex align-items-center gap-2">
+          <img src="{{ current_user.image_url}}" class="border border-3  border-success rounded-circle shadow-lg  " width="50px" alt="My profile picture">
+          <div>
+            <p class=" m-0">{{ current_user.email.upper() }}</p>
+          </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </nav>

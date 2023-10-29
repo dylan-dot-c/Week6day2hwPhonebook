@@ -110,8 +110,8 @@ def login():
 @login_required
 def dashboard():
 
-    user = current_user
-    addresses = user.addresses
+    
+    addresses = db.session.execute(db.select(Address).where(Address.user_id == current_user.user_id).order_by(db.asc(Address.last_name), db.asc(Address.first_name) )).scalars().all()
     return render_template('dashboard.html', addresses=addresses)
 
 
@@ -149,6 +149,8 @@ def edit_contact(contact_id):
         contact.last_name = form.data.get('last_name')
         contact.phone_number = form.data.get('phone_number')
         contact.address = form.data.get('address')
+
+
 
         db.session.commit()
         flash("Contact Has been updated!")

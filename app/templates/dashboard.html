@@ -8,7 +8,14 @@
         <div data-bs-theme="dark" class="col-2 bg-dark
          text-white gap-0 p-4 ">
             <img src="{{ current_user.image_url }}" alt="{{ current_user.email }} pic" class="mx-auto rounded-circle object-fit-cover " width="100%" height="150px">
-            <p>You have logged in as {{ current_user.email }}</p>
+            <p>You have logged in as {{ current_user.first_name }} {{ current_user.last_name }}</p>
+
+            <div class="d-flex justify-content-between align-items-center border-bottom  border-2 mb-3">
+                <p>Contacts</p>
+                <p class="btn btn-success rounded-circle">{{ addresses|length }}</p>
+            </div>
+
+            <a class=" btn btn-outline-danger w-100" href="{{ url_for('logout') }}">Log Out</a>
         </div>
 
         <div class="col">
@@ -17,8 +24,11 @@
         <div class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 100px);">
             <div class="w-50 mx-auto text-center ">
                 <h2>No Contacts!</h2>
-                <button class="btn btn-primary w-50">New Contact <i class="bi bi-person-plus"></i></button>
-            </div>
+                <a href="{{url_for('contact')}}">
+                    <button class="btn btn-primary w-50">New Contact <i class="bi bi-person-plus"></i></button>
+          
+                </a>
+                  </div>
         </div>
         
 

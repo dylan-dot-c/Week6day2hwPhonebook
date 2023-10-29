@@ -7,13 +7,16 @@
   
 {# main content #}
 {% block main_content %}
-  <h1>Add New Contact</h1>
+  <section class="container mx-auto">
+    <div class="text-center">
+      <h1>Add New Contact</h1>
   <p>
     Fill in the form if you would like to add a new Contact.
   </p>
+    </div>
 
   {# form that is using the form instance that was passed #}
-  <form action="" method="post" class="w-50">
+  <form action="" method="post" class="w-50 mx-auto">
 
     {# hidden csrf token #} {{ form.csrf_token }} 
     
@@ -44,4 +47,5 @@
     {{ form.submit(class='btn btn-primary w-100') }}
     </div>
   </form>
+  </section>
 {% endblock %}
